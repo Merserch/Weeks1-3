@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class LinearInterpolation : MonoBehaviour
 {
-    public Vector2 start;
-    public Vector2 end;
+    public Transform start;
+    public Transform end;
     public float t = 0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,6 +21,6 @@ public class LinearInterpolation : MonoBehaviour
             t = 0;
         }
 
-        transform.position = Vector2.Lerp(start, end, t);
+        transform.position = Vector2.Lerp(start.position, end.position, t);
     }
 }
