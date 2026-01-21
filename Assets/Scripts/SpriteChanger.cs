@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class SpriteChanger : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
     public Color col;
-    public Sprite[] barrels;
+    public List<Sprite> barrels;
     public int randomSpriteIndex;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,8 +20,18 @@ public class SpriteChanger : MonoBehaviour
     {
         if (Keyboard.current.anyKey.wasPressedThisFrame)
         {
-            //PickARandomColour();
-            PickARandomSprite();
+            Debug.Log("Try to change the sprite");
+            if(barrels.Count > 0)
+            {
+                //PickARandomColour();
+                PickARandomSprite();
+            }
+
+        }
+
+        if (Mouse.current.leftButton.wasPressedThisFrame && barrels.Count > 0)
+        {
+            barrels.RemoveAt(0);
         }
 
         //get the mouse position
@@ -46,7 +57,7 @@ public class SpriteChanger : MonoBehaviour
     void PickARandomSprite()
     {
         //get a random number that is the size of the barrels array
-        randomSpriteIndex = Random.Range(0, barrels.Length);
+        randomSpriteIndex = Random.Range(0, barrels.Count);
         //use that to set the sprite
         spriteRenderer.sprite = barrels[randomSpriteIndex];
 
