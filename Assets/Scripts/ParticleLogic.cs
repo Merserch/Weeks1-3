@@ -4,24 +4,38 @@ public class ParticleLogic : MonoBehaviour
 {
     public float speed;
     //spawn point for the particle
-    public float spawnPoint;
+    public Transform spawnPoint;
     //other end of the interpolation
-    private float fallPoint;
+    public Transform fallPoint;
+    //percentage for lerp
+    private float t;
+    //setting the time
+    public float interpLength = 0.1f;
+    //animation curve for falling
+    public AnimationCurve easing;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //initial spawn
-        spawnPoint = 0;
-        //initial despawn
-        fallPoint = spawnPoint - 4f;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        //progressing time
+        t += Time.deltaTime;
+        if (t > interpLength)
+        {
+            t = 0f;
+        }
+
         //respawn logic
 
 
+        //lerping
+        transform.position = Vector2.Lerp(spawnPoint.position, fallPoint.position, easing.Evaluate(t/interpLength));
+
+        //rotation
         Vector3 rotation = transform.eulerAngles;
         rotation.z += speed * Time.deltaTime;
         transform.eulerAngles = rotation;
