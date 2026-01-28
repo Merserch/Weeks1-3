@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1bbefbcee92048cbb47415c8fdee4fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 15
   spawnPoint: {fileID: 1701927647}
   fallPoint: {fileID: 2134266955}
   interpLength: 3
