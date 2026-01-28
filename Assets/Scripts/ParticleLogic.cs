@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ParticleLogic : MonoBehaviour
 {
-    public float speed;
+    public float speed = 15;
     //spawn point for the particle
     public Transform spawnPoint;
     //other end of the interpolation
@@ -10,7 +10,7 @@ public class ParticleLogic : MonoBehaviour
     //percentage for lerp
     private float t;
     //setting the time
-    public float interpLength = 0.1f;
+    public float interpLength = 3f;
     //animation curve for falling
     public AnimationCurve easing;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
